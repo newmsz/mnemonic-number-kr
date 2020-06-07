@@ -20,9 +20,14 @@ class MnemonicNumberKr extends EventEmitter {
       fs.readFile(filename, (err, buf) => {
         if(err) throw err;
 
-        let split = buf.toString().trim().split('\n');
+        let split = buf.toString().trim().split('\n').map(w => w.trim());
         let dedup = { };
         split = split.filter(w => {
+          w = w.trim();
+          if(!w) return false;
+          if(w.length >= 6) {
+            return false;
+          }
           if(w.split(' ').length != 1) {
             debug(`A word having a space: ${w}`);
             return false;
@@ -39,6 +44,7 @@ class MnemonicNumberKr extends EventEmitter {
           split = shuffleSeed.shuffle(split, this._shuffleSeed);
         }
 
+        fs.writeFileSync('../test/res.txt', split.join('\n'));
         return cb(null, split);
       });
     }, (err, dictionaries) => {

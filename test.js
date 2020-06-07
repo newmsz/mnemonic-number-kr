@@ -108,6 +108,24 @@ describe('Conversion', () => {
       done();
     });
   });
+
+  it('should en/decode numbers for all combinations w/ different dictionaries', done  => {
+    let MnemonicNumberKr = require('.');
+    let mnum = new MnemonicNumberKr({
+      dictionaries: [ 'test.txt', 'numbers.txt', 'test.txt', 'numbers.txt' ]
+    });
+
+    mnum.on('load', () => {
+      assert.strictEqual(mnum.combinations, 90000);
+      for(let i=0; i<mnum.combinations*2; i++) {
+        let words = mnum.fromInteger(i);
+        assert.strictEqual(words.length, 4);
+        assert.strictEqual(mnum.toInteger(words), i%mnum.combinations);
+      }
+
+      done();
+    });
+  });
 });
 
 describe('Shuffle check', () => {
