@@ -1,0 +1,28 @@
+{
+  "name": "mnemonic-number-kr",
+  "version": "1.0.0",
+  "description": "숫자를 외우기 쉬운 한국어 단어로 변환, Converts numbers to predefined list of Korean words",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx mocha test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/newmsz/mnemonic-number-kr.git"
+  },
+  "author": "newms@newms.org",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/newmsz/mnemonic-number-kr/issues"
+  },
+  "homepage": "https://github.com/newmsz/mnemonic-number-kr#readme",
+  "dependencies": {
+    "async": "^3.2.0",
+    "debug": "^4.1.1",
+    "seedrandom": "^3.0.5",
+    "shuffle-seed": "^1.1.6"
+  },
+  "devDependencies": {
+    "mocha": "^7.2.0"
+  }
+}
