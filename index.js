@@ -44,7 +44,6 @@ class MnemonicNumberKr extends EventEmitter {
           split = shuffleSeed.shuffle(split, this._shuffleSeed);
         }
 
-        fs.writeFileSync('../test/res.txt', split.join('\n'));
         return cb(null, split);
       });
     }, (err, dictionaries) => {
